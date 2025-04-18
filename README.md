@@ -1,13 +1,12 @@
 # Project: Loot Generator
 
-Authors: (_TODO: fill in names here!_)
+Authors: Tiffany Tang
 
 ## Resources
 
-*   (_TODO: fill in resources here!_)
-*   ...
-*   ...
+*  Java 23 and NetBeans are used for this project.
+* This project is supervised by: 
+https://osera.cs.grinnell.edu/ttap/data-structures-labs/loot-generator.html
 
 ## Revision Log
 
-*   (_TODO: fill in your changes to your project here!_)
