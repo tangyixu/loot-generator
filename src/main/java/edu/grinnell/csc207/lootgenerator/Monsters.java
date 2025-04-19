@@ -15,7 +15,7 @@ public class Monsters {
         Scanner scan = new Scanner(file);
         while (scan.hasNext()) {
             String wholeS = scan.nextLine();
-            String[] eachS = wholeS.split("     ");
+            String[] eachS = wholeS.split("\t");
             this.arr.add(new Monster(eachS[0], eachS[1],
                     Integer.parseInt(eachS[2]), new Treasure(eachS[3])));
         }
