@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.lootgenerator;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -26,7 +27,7 @@ public class Suffixs {
         scan.close();
     }
 
-    public ArrayList<String> getPrefixL() {
+    public ArrayList<String> getSuffixL() {
         return this.suffixL;
     }
 
@@ -36,6 +37,16 @@ public class Suffixs {
 
     public ArrayList<Pair> getModRange() {
         return this.modRange;
+    }
+
+    public String[] getSuffix(int index) {
+        Random r = new Random();
+        String[] results = {"", "", ""};
+        Pair p = this.modRange.get(index);
+        results[0] = this.suffixL.get(index);
+        results[1] = "" + r.nextInt(p.getMax() - p.getMin() + 1) + p.getMin();
+        results[2] = this.modCode.get(index);
+        return results;
     }
 
 }

@@ -2,6 +2,7 @@ package edu.grinnell.csc207.lootgenerator;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -36,6 +37,16 @@ public class Prefixs {
 
     public ArrayList<Pair> getModRange() {
         return this.modRange;
+    }
+
+    public String[] getPrefix(int index) {
+        Random r = new Random();
+        String[] results = {"", "", ""};
+        Pair p = this.modRange.get(index);
+        results[0] = this.prefixL.get(index);
+        results[1] = "" + r.nextInt(p.getMax() - p.getMin() + 1) + p.getMin();
+        results[2] = this.modCode.get(index);
+        return results;
     }
 
 }
