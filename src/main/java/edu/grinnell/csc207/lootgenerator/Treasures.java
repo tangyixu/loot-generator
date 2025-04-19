@@ -16,7 +16,7 @@ public class Treasures {
         Scanner scan = new Scanner(file);
         while (scan.hasNext()) {
             String wholeS = scan.nextLine();
-            String[] eachS = wholeS.split("\\s+");
+            String[] eachS = wholeS.split("     ");
             String[] items = Arrays.copyOfRange(eachS, 1, 4);
             String TC = eachS[0];
             Treasure p = new Treasure(TC, items);
@@ -29,4 +29,12 @@ public class Treasures {
         return allTreasure.contains(t);
     }
 
+    public boolean isTC(String TC) {
+        for (Treasure t : this.allTreasure) {
+            if (t.TC.equals(TC)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

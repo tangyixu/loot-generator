@@ -19,8 +19,12 @@ public class Treasure {
         this.items = new String[0];
     }
 
-    public String getTC() {
+    public String getName() {
         return this.TC;
+    }
+
+    public String[] getItems() {
+        return this.items;
     }
 
 }
