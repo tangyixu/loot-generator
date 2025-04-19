@@ -9,13 +9,13 @@ public class Monster {
     private String name;
     private String type;
     private int level;
-    private Treasure treasureClass;
+    private Treasure TC;
 
     public Monster(String name, String type, int level, Treasure treasure) {
         this.name = name;
         this.type = type;
         this.level = level;
-        this.treasureClass = treasure;
+        this.TC = treasure;
     }
 
     public String getName() {
@@ -30,7 +30,7 @@ public class Monster {
         return this.level;
     }
 
-    public Treasure getTreasure() {
-        return this.treasureClass;
+    public Treasure getTC() {
+        return this.TC;
     }
 }
