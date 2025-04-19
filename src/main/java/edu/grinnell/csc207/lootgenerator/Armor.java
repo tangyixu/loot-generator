@@ -19,6 +19,10 @@ public class Armor {
 
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int baseStats() {
         Random r = new Random();
         return r.nextInt(max + 1) + min;
