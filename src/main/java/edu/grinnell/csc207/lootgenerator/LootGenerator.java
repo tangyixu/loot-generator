@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.lootgenerator;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class LootGenerator {
 
@@ -8,10 +9,10 @@ public class LootGenerator {
      * The path to the dataset (either the small or large set).
      */
     private static final String DATA_SET = "data/small";
-    private Monster monster;
-    private Treasure generatedDrop;
-    private String suffix;
-    private String prefix;
+    public Monster monster;
+    public Treasure generatedDrop;
+    public String suffix;
+    public String prefix;
 
     private Treasures allTreasures = new Treasures(LootGenerator.DATA_SET + "/TreasureClass.txt");
     private Armors allArmors = new Armors(LootGenerator.DATA_SET + "/armor.txt");
@@ -63,13 +64,40 @@ public class LootGenerator {
         return affix;
     }
 
-    public LootGenerator(Monster m, Treasure t) {
+    public LootGenerator() {
         this.monster = pickMonster();
         this.generatedDrop = generateBaseItem(fetchTreasureClass());
     }
 
     public static void main(String[] args) {
-        System.out.println("This program kills monsters and generates loot!");
+        boolean again = true;
+        while (again) {
+            Scanner scan = new Scanner(System.in);
+            LootGenerator lg = new LootGenerator();
+            String monsterName = lg.monster.getName();
+            System.out.println("Fighting" + monsterName + "...");
+            System.out.println("You have slain" + monsterName + "!");
+            System.out.println(monsterName + "dropped:");
+            System.out.println(lg.generateAffix()[0] + lg.generatedDrop.getName()
+                    + lg.generateAffix()[3]);
+            System.out.println(lg.generatedDrop.getName());
+            System.out.println("Defense:" + lg.generateBaseStats());
+            System.out.println(lg.generateAffix()[1] + lg.generateAffix()[2]);
+            System.out.println(lg.generateAffix()[4] + lg.generateAffix()[5]);
+
+            System.out.println("Fight again [y/n]?");
+            String input = scan.nextLine().toLowerCase();
+            switch (input) {
+                case "y" ->
+                    again = true;
+                case "n" ->
+                    again = false;
+                default -> {
+                    System.out.println("Invalid input. Only y or n is accepatble.");
+                    System.exit(1);
+                }
+            }
+        }
 
     }
 }
