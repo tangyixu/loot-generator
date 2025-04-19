@@ -16,7 +16,7 @@ public class Treasures {
         Scanner scan = new Scanner(file);
         while (scan.hasNext()) {
             String wholeS = scan.nextLine();
-            String[] eachS = wholeS.split("     ");
+            String[] eachS = wholeS.split("\t");
             String[] items = Arrays.copyOfRange(eachS, 1, 4);
             String TC = eachS[0];
             Treasure p = new Treasure(TC, items);
