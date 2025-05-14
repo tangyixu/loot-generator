@@ -1,21 +1,39 @@
 package edu.grinnell.csc207.lootgenerator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 /**
+ * Processing all suffixs information from the given file.
  *
  * @author Tiffany
  */
 public class Suffixs {
 
+    /**
+     * The list of all suffixs.
+     */
     private ArrayList<String> suffixL = new ArrayList<>();
+    /**
+     * The list of strings for code.
+     */
     private ArrayList<String> modCode = new ArrayList<>();
+    /**
+     * The ranges of the code.
+     */
     private ArrayList<Pair> modRange = new ArrayList<>();
 
-    public Suffixs(String file) {
-        Scanner scan = new Scanner(file);
+    /**
+     * Construct suffixs from a given file.
+     *
+     * @param file
+     * @throws FileNotFoundException
+     */
+    public Suffixs(String file) throws FileNotFoundException {
+        Scanner scan = new Scanner(new File(file));
         while (scan.hasNext()) {
             String wholeS = scan.nextLine();
             String[] eachS = wholeS.split("\t");
@@ -27,24 +45,45 @@ public class Suffixs {
         scan.close();
     }
 
+    /**
+     * Return the list of suffixs.
+     *
+     * @return suffixL
+     */
     public ArrayList<String> getSuffixL() {
         return this.suffixL;
     }
 
+    /**
+     * All codes as a list for suffixs.
+     *
+     * @return modCode
+     */
     public ArrayList<String> getModCode() {
         return this.modCode;
     }
 
+    /**
+     * Return the range of codes.
+     *
+     * @return modRange
+     */
     public ArrayList<Pair> getModRange() {
         return this.modRange;
     }
 
+    /**
+     * Return a specific suffix based on the index with its code and value.
+     *
+     * @param index
+     * @return a suffix as an array of string.
+     */
     public String[] getSuffix(int index) {
         Random r = new Random();
         String[] results = {"", "", ""};
         Pair p = this.modRange.get(index);
-        results[0] = this.suffixL.get(index);
-        results[1] = "" + r.nextInt(p.getMax() - p.getMin() + 1) + p.getMin();
+        results[0] = this.suffixL.get(index) + "";
+        results[1] = Integer.toString(r.nextInt(p.getMax() - p.getMin() + 1) + p.getMin());
         results[2] = this.modCode.get(index);
         return results;
     }
